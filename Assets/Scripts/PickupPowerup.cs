@@ -15,8 +15,8 @@ public class PickupPowerup : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter (Collider other) {
-		CrowdCheer cheerScript = transform.parent.gameObject.GetComponent<CrowdCheer>();
-		cheerScript.PlayCheerAudio(); 
+		PlayPickupSound audioScript = transform.parent.gameObject.GetComponent<PlayPickupSound>();
+		audioScript.PlayPickupAudio(); 
 		Destroy(this.gameObject);
 	}
 }
