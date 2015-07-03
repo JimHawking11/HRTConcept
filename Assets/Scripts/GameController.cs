@@ -6,6 +6,8 @@ public class GameController : MonoBehaviour {
 	public int keyCount = 1;
 	public string nextLevel = @"";
 	
+	public AudioClip levelOverClip;
+	
 	// Use this for initialization
 	void Start () {
 	
@@ -22,7 +24,17 @@ public class GameController : MonoBehaviour {
 		if (keyCount <= 0)
 		{
 			print("Level Over");
-			Application.LoadLevel(nextLevel);
+
+			AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+			audioSource.clip = levelOverClip;
+			audioSource.Play();
+
+			Invoke("goToNextLevel", levelOverClip.length);
 		}
+	}
+	
+	public void goToNextLevel ()
+	{
+		Application.LoadLevel(nextLevel);
 	}
 }
