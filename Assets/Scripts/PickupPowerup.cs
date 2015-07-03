@@ -17,6 +17,11 @@ public class PickupPowerup : MonoBehaviour {
 	void OnTriggerEnter (Collider other) {
 		PlayPickupSound audioScript = transform.parent.gameObject.GetComponent<PlayPickupSound>();
 		audioScript.PlayPickupAudio(); 
+		
+		GameObject GO = other.gameObject;
+		GameController gameControllerScript = other.gameObject.GetComponent<GameController>();
+		gameControllerScript.keyPickedUp();
+		
 		Destroy(this.gameObject);
 	}
 }
