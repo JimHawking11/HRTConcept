@@ -9,8 +9,8 @@ public class GameController : MonoBehaviour {
 	public AudioClip levelOverClip;
 	
 	// Use this for initialization
-	void Start () {
-	
+	public void Start () {
+		Screen.orientation = ScreenOrientation.Portrait;
 	}
 	
 	// Update is called once per frame
