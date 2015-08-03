@@ -207,30 +207,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			float horizontal = Input.acceleration.x;
 			float vertical = -Input.acceleration.z;
 			
-			float limiter = .2f;
+			int horizontalSpeed = (int)Math.Abs ((horizontal / .1));
+			int verticalSpeed = (int)Math.Abs ((vertical / .1));
 			
-			if(horizontal < limiter && horizontal > -limiter)
-			{
-				horizontal = 0;
-			}
+			print("horizontal = " + horizontal + " vertical = " + vertical);	
+			print("horizontalSpeed = " + horizontalSpeed + " verticalSpeed = " + verticalSpeed);	
 			
-			if(vertical < limiter && vertical > -limiter)
-			{
-				vertical = 0;
-			}
-			
-			//float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-            //float vertical = CrossPlatformInputManager.GetAxis("Vertical");
-
             bool waswalking = m_IsWalking;
-
-#if !MOBILE_INPUT
-            // On standalone builds, walk/run speed is modified by a key press.
-            // keep track of whether or not the character is walking or running
-            m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
-#endif
+            
             // set the desired speed to be walking or running
-            speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+            speed = Math.Min(horizontalSpeed + verticalSpeed, m_RunSpeed);
             m_Input = new Vector2(horizontal, vertical);
 
             // normalize input if it exceeds 1 in combined length:
