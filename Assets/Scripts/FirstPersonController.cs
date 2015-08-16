@@ -210,8 +210,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			int horizontalSpeed = (int)Math.Abs ((horizontal / .1));
 			int verticalSpeed = (int)Math.Abs ((vertical / .1));
 			
-			print("horizontal = " + horizontal + " vertical = " + vertical);	
-			print("horizontalSpeed = " + horizontalSpeed + " verticalSpeed = " + verticalSpeed);	
+			//print("horizontal = " + horizontal + " vertical = " + vertical);	
+			//print("horizontalSpeed = " + horizontalSpeed + " verticalSpeed = " + verticalSpeed);	
 			
             bool waswalking = m_IsWalking;
             

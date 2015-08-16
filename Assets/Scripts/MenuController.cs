@@ -6,7 +6,9 @@ using System.Collections;
 
 public class MenuController : MonoBehaviour {
 
-	public AudioSource sourceBackgroundMusic;
+	public AudioSource sourceIntroMusic;
+	public AudioSource sourceLoopMusic;
+	
 	public Image imageSplashBackground;
 	
 	public Image stageOneHeadphoneIcon;
@@ -24,7 +26,7 @@ public class MenuController : MonoBehaviour {
 	
 	// Use this for initialization
 	void Awake () {
-		sourceBackgroundMusic.Play();
+		sourceIntroMusic.Play();
 		
 		Invoke( "showStageOne", 5.6f );
 		Invoke( "showStageTwo", 10.0f );
@@ -33,6 +35,7 @@ public class MenuController : MonoBehaviour {
 		Invoke( "showStageFive", 17.3f );
 		Invoke( "showStageSix", 21.0f );
 		Invoke( "hideSplashBackground", 23.0f );
+		Invoke( "switchToLoop", 97.0f );
 	}
 	
 	// Update is called once per frame
@@ -42,21 +45,37 @@ public class MenuController : MonoBehaviour {
 			FadeImage(stageOneHeadphoneIcon, false);
 		} else if(introStage == 3) {
 			FadeText(stageThreeText, true);
-			ShiftAudio(sourceBackgroundMusic, -.7f);
+			ShiftAudio(sourceIntroMusic, -.7f);
 		} else if(introStage == 4) {
 			FadeText(stageFourText, true);
-			ShiftAudio(sourceBackgroundMusic, .7f);
+			ShiftAudio(sourceIntroMusic, .7f);
 		} else if(introStage == 5) {
 			FadeText(stageThreeText, false);
 			FadeText(stageFourText, false);
 			FadeText(stageFiveText, true);
-			ShiftAudio(sourceBackgroundMusic, 0.0f);
+			ShiftAudio(sourceIntroMusic, 0.0f);
 		}else if(introStage == 6) {
 			FadeText(stageFiveText, false);
 			FadeText(stageSixText, true);
 		}
 	}
 	
+	//Button Functions
+	public void skipButtonPressed ()
+	{
+		CancelInvoke("showStageOne");
+		CancelInvoke("showStageThree");
+		CancelInvoke("showStageFour");
+		CancelInvoke("showStageFive");
+		CancelInvoke("showStageSix");
+		CancelInvoke("hideSplashBackground");
+		CancelInvoke("switchToLoop");
+		hideSplashBackground();
+		switchToLoop();
+	}
+	
+	//UI Functions
+
 	//FadeDir (false = out, true = in)
 	void FadeText(Text textObject, bool fadeDir)
 	{
@@ -95,6 +114,19 @@ public class MenuController : MonoBehaviour {
 		}
 	}
 	
+	void hideSplashBackground ()
+	{
+		imageSplashBackground.gameObject.SetActive(false);
+	}
+	
+	void switchToLoop ()
+	{
+		sourceIntroMusic.Stop ();
+		sourceLoopMusic.Play ();
+	}
+	
+	//Stage Functions
+	
 	void showStageOne ()
 	{
 		introStage = 1;
@@ -129,10 +161,5 @@ public class MenuController : MonoBehaviour {
 	{
 		stageSixText.gameObject.SetActive(true);
 		introStage = 6;
-	}
-	
-	void hideSplashBackground ()
-	{
-		imageSplashBackground.gameObject.SetActive(false);
 	}
 }
