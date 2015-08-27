@@ -16,12 +16,10 @@ public class TurnPlayer : MonoBehaviour {
 		}
 		else if (isLeft)
 		{
-			print ("Rotating Left");
 			playerObject.transform.Rotate(-Vector3.up * speed * Time.deltaTime);
 		}
 		else if (isRight)
 		{
-			print ("Rotating Right");
 			playerObject.transform.Rotate(Vector3.up * speed * Time.deltaTime);
 		}
 	}
@@ -38,13 +36,11 @@ public class TurnPlayer : MonoBehaviour {
 	
 	public void RightPointerDown()
 	{
-		print ("Right Down");
 		isRight = true;
 	}
 	
 	public void RightPointerUp()
 	{
-		print ("Right Up");
 		isRight = false;
 	}
 	

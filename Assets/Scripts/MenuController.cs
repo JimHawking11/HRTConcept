@@ -74,6 +74,11 @@ public class MenuController : MonoBehaviour {
 		switchToLoop();
 	}
 	
+	public void playButtonPressed ()
+	{
+		Application.LoadLevel("Level_1");
+	}
+	
 	//UI Functions
 
 	//FadeDir (false = out, true = in)
