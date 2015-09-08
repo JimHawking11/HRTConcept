@@ -201,7 +201,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void GetInput(out float speed)
         {
-			//print("X Accel = " + Input.acceleration.x + " Y Accel = " + Input.acceleration.y + " Z Accel = " + Input.acceleration.z);	
 			// Read input
             
 			float horizontal = Input.acceleration.x;
@@ -209,9 +208,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			
 			int horizontalSpeed = (int)Math.Abs ((horizontal / .1));
 			int verticalSpeed = (int)Math.Abs ((vertical / .1));
-			
-			//print("horizontal = " + horizontal + " vertical = " + vertical);	
-			//print("horizontalSpeed = " + horizontalSpeed + " verticalSpeed = " + verticalSpeed);	
 			
             bool waswalking = m_IsWalking;
             

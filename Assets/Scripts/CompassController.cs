@@ -16,7 +16,7 @@ public class CompassController : MonoBehaviour {
 	void Update () {
 		float yRotation = playerObject.transform.rotation.eulerAngles.y;
 		
-		print ("Rotation = " + yRotation);
+		//print ("Rotation = " + yRotation);
 		compassRing.transform.eulerAngles = new Vector3(0, 0, yRotation);
 	}
 }

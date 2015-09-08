@@ -44,5 +44,15 @@ public class TurnPlayer : MonoBehaviour {
 		isRight = false;
 	}
 	
+	public void TempButtonTapped()
+	{
+		Vibrate();
+	}
+	
+	public void Vibrate()
+	{
+		Handheld.Vibrate();
+	}
+	
 	
 }
